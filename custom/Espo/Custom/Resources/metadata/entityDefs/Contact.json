@@ -1,0 +1,19 @@
+{
+    "fields": {
+        "location": {
+            "type": "address",
+            "viewMap": false,
+            "isCustom": true
+        },
+        "address": {
+            "viewMap": true
+        },
+        "name1": {
+            "type": "varchar",
+            "required": true,
+            "trim": true,
+            "options": [],
+            "isCustom": true
+        }
+    }
+}

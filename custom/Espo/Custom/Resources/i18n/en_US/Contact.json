@@ -1,0 +1,12 @@
+{
+    "fields": {
+        "location": "Location",
+        "locationStreet": "Location Street",
+        "locationCity": "Location City",
+        "locationState": "Location State",
+        "locationCountry": "Location Country",
+        "locationPostalCode": "Location Postal Code",
+        "locationMap": "Location Map",
+        "name1": "အမည္"
+    }
+}

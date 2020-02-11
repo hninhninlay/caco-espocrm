@@ -1,0 +1,1 @@
+[2020-02-11 05:07:01] Espo.ERROR: (409) Field [name] exists in Contact; POST /api/v1/Admin/fieldManager/Contact; line: 116, file: /var/www/html/espocrm/application/Espo/Core/Utils/FieldManager.php [] []
