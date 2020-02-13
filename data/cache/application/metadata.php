@@ -5840,6 +5840,10 @@ return array (
               ),
             ),
           ),
+          'source' => 
+          array (
+            'required' => NULL,
+          ),
         ),
         'panels' => 
         array (
@@ -14792,6 +14796,11 @@ return array (
           'layoutDetailDisabled' => true,
           'directAccessDisabled' => true,
         ),
+        'lead' => 
+        array (
+          'type' => 'linkOne',
+          'isCustom' => true,
+        ),
         'middleName' => 
         array (
           'type' => 'varchar',
@@ -14937,6 +14946,13 @@ return array (
           'notStorable' => true,
           'readOnly' => true,
           'disabled' => true,
+        ),
+        'lead' => 
+        array (
+          'type' => 'hasOne',
+          'foreign' => 'user',
+          'entity' => 'Lead',
+          'isCustom' => true,
         ),
       ),
       'collection' => 
@@ -18565,25 +18581,36 @@ return array (
         array (
           'type' => 'varchar',
           'maxLength' => 100,
+          'required' => true,
+          'options' => 
+          array (
+          ),
         ),
         'status' => 
         array (
           'type' => 'enum',
           'options' => 
           array (
-            0 => 'New',
-            1 => 'Assigned',
-            2 => 'In Process',
-            3 => 'Converted',
-            4 => 'Recycled',
-            5 => 'Dead',
+            0 => 'Select One Status',
+            1 => 'New',
+            2 => 'Prospect',
+            3 => 'Qualifed',
+            4 => 'Contracted',
+            5 => 'Cancel',
+            6 => 'Recycled',
           ),
-          'default' => 'New',
+          'default' => 'Select One Status',
           'style' => 
           array (
             'Converted' => 'success',
             'Recycled' => 'danger',
             'Dead' => 'danger',
+            'Select One Status' => NULL,
+            'New' => NULL,
+            'Prospect' => NULL,
+            'Qualifed' => NULL,
+            'Contracted' => NULL,
+            'Cancel' => NULL,
           ),
           'audited' => true,
           'fieldManagerAdditionalParamList' => 
@@ -18600,6 +18627,7 @@ return array (
             1 => 'Recycled',
             2 => 'Dead',
           ),
+          'required' => true,
         ),
         'source' => 
         array (
@@ -18607,16 +18635,36 @@ return array (
           'options' => 
           array (
             0 => '',
-            1 => 'Call',
-            2 => 'Email',
-            3 => 'Existing Customer',
-            4 => 'Partner',
-            5 => 'Public Relations',
-            6 => 'Web Site',
-            7 => 'Campaign',
-            8 => 'Other',
+            1 => 'Select One Source',
+            2 => 'Advertisement',
+            3 => 'Call',
+            4 => 'Campaign',
+            5 => 'Email',
+            6 => 'Existing Customer',
+            7 => 'Partner',
+            8 => 'Public Relations',
+            9 => 'Trade Show',
+            10 => 'Social Media Marketing',
+            11 => 'Web Site',
+            12 => 'Other',
           ),
-          'default' => '',
+          'default' => 'Select One Source',
+          'style' => 
+          array (
+            '' => NULL,
+            'Select One Source' => NULL,
+            'Advertisement' => NULL,
+            'Call' => NULL,
+            'Campaign' => NULL,
+            'Email' => NULL,
+            'Existing Customer' => NULL,
+            'Partner' => NULL,
+            'Public Relations' => NULL,
+            'Trade Show' => NULL,
+            'Social Media Marketing' => NULL,
+            'Web Site' => NULL,
+            'Other' => NULL,
+          ),
         ),
         'industry' => 
         array (
@@ -18687,6 +18735,7 @@ return array (
         array (
           'type' => 'email',
           'isPersonalData' => true,
+          'required' => true,
         ),
         'phoneNumber' => 
         array (
@@ -18701,6 +18750,7 @@ return array (
           ),
           'defaultType' => 'Mobile',
           'isPersonalData' => true,
+          'required' => true,
         ),
         'doNotCall' => 
         array (
@@ -18839,6 +18889,166 @@ return array (
           'readOnly' => true,
           'disabled' => true,
         ),
+        'accountType' => 
+        array (
+          'type' => 'enum',
+          'required' => true,
+          'options' => 
+          array (
+            0 => 'Select One Account Type',
+            1 => 'Agent',
+            2 => 'Biller',
+            3 => 'Merchant',
+            4 => 'SuperAgent',
+          ),
+          'style' => 
+          array (
+            'Select One Account Type' => NULL,
+            'Agent' => NULL,
+            'Biller' => NULL,
+            'Merchant' => NULL,
+            'SuperAgent' => NULL,
+          ),
+          'isSorted' => false,
+          'default' => 'Select One Account Type',
+          'isCustom' => true,
+        ),
+        'companyName' => 
+        array (
+          'type' => 'varchar',
+          'required' => true,
+          'trim' => true,
+          'options' => 
+          array (
+          ),
+          'isCustom' => true,
+        ),
+        'annualRevenu' => 
+        array (
+          'type' => 'currency',
+          'required' => true,
+          'isCustom' => true,
+        ),
+        'noofEmp' => 
+        array (
+          'type' => 'int',
+          'required' => true,
+          'isCustom' => true,
+        ),
+        'billPaymentType' => 
+        array (
+          'type' => 'enum',
+          'options' => 
+          array (
+            0 => 'Online',
+            1 => 'Offline',
+          ),
+          'style' => 
+          array (
+            'Online' => NULL,
+            'Offline' => NULL,
+          ),
+          'default' => 'Online',
+          'isCustom' => true,
+        ),
+        'settlement' => 
+        array (
+          'type' => 'enum',
+          'options' => 
+          array (
+            0 => 'Daily',
+            1 => 'Monthly',
+            2 => 'Weekly',
+          ),
+          'style' => 
+          array (
+            'Daily' => NULL,
+            'Monthly' => NULL,
+            'Weekly' => NULL,
+          ),
+          'default' => 'Daily',
+          'isCustom' => true,
+        ),
+        'settlementMethod' => 
+        array (
+          'type' => 'enum',
+          'options' => 
+          array (
+            0 => 'Bank',
+            1 => 'Mobile Money',
+            2 => 'Cash',
+            3 => 'Other',
+          ),
+          'style' => 
+          array (
+            'Bank' => NULL,
+            'Mobile Money' => NULL,
+            'Cash' => NULL,
+            'Other' => NULL,
+          ),
+          'default' => 'Bank',
+          'isCustom' => true,
+        ),
+        'averageTicketSize' => 
+        array (
+          'type' => 'varchar',
+          'trim' => true,
+          'options' => 
+          array (
+          ),
+          'isCustom' => true,
+        ),
+        'customerFees' => 
+        array (
+          'type' => 'enum',
+          'options' => 
+          array (
+            0 => 'Surcharge Flat',
+            1 => 'Surcharge Percent',
+            2 => 'Commission Flat',
+            3 => 'Commission Percent',
+          ),
+          'style' => 
+          array (
+            'Surcharge Flat' => NULL,
+            'Surcharge Percent' => NULL,
+            'Commission Flat' => NULL,
+            'Commission Percent' => NULL,
+          ),
+          'default' => 'Surcharge Flat',
+          'isCustom' => true,
+        ),
+        'processingFees' => 
+        array (
+          'type' => 'enum',
+          'options' => 
+          array (
+            0 => 'Surcharge Flat',
+            1 => 'Surcharge Percent',
+            2 => 'Commission Flat',
+            3 => 'Commission Percent',
+          ),
+          'style' => 
+          array (
+            'Surcharge Flat' => NULL,
+            'Surcharge Percent' => NULL,
+            'Commission Flat' => NULL,
+            'Commission Percent' => NULL,
+          ),
+          'default' => 'Surcharge Flat',
+          'isCustom' => true,
+        ),
+        'annualTransactionCount' => 
+        array (
+          'type' => 'int',
+          'isCustom' => true,
+        ),
+        'user' => 
+        array (
+          'type' => 'link',
+          'isCustom' => true,
+          'required' => true,
+        ),
         'middleName' => 
         array (
           'type' => 'varchar',
@@ -18894,6 +19104,29 @@ return array (
           'mergeDisabled' => true,
           'customizationDefaultDisabled' => true,
           'customizationReadOnlyDisabled' => true,
+        ),
+        'annualRevenuCurrency' => 
+        array (
+          'type' => 'enum',
+          'view' => 'views/fields/currency-list',
+          'layoutDetailDisabled' => true,
+          'layoutListDisabled' => true,
+          'layoutMassUpdateDisabled' => true,
+          'layoutDefaultSidePanelDisabled' => true,
+          'customizationRequiredDisabled' => true,
+          'customizationOptionsDisabled' => true,
+          'customizationIsSortedDisabled' => true,
+          'customizationDisplayAsLabelDisabled' => true,
+          'customizationAuditedDisabled' => true,
+          'customizationReadOnlyDisabled' => true,
+          'customizationDefaultView' => 'views/admin/field-manager/fields/currency-default',
+          'maxLength' => 6,
+        ),
+        'annualRevenuConverted' => 
+        array (
+          'type' => 'currencyConverted',
+          'readOnly' => true,
+          'importDisabled' => true,
         ),
       ),
       'links' => 
@@ -19000,6 +19233,13 @@ return array (
           'entity' => 'Document',
           'foreign' => 'leads',
           'audited' => true,
+        ),
+        'user' => 
+        array (
+          'type' => 'belongsTo',
+          'foreign' => 'lead',
+          'entity' => 'User',
+          'isCustom' => true,
         ),
       ),
       'convertEntityList' => 

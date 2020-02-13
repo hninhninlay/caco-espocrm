@@ -4646,6 +4646,9 @@ return (object) [
                                 ]
                             ]
                         ]
+                    ],
+                    'source' => (object) [
+                        'required' => NULL
                     ]
                 ],
                 'panels' => (object) [
@@ -11856,6 +11859,10 @@ return (object) [
                     'layoutDetailDisabled' => true,
                     'directAccessDisabled' => true
                 ],
+                'lead' => (object) [
+                    'type' => 'linkOne',
+                    'isCustom' => true
+                ],
                 'middleName' => (object) [
                     'type' => 'varchar',
                     'trim' => true,
@@ -11978,6 +11985,12 @@ return (object) [
                     'notStorable' => true,
                     'readOnly' => true,
                     'disabled' => true
+                ],
+                'lead' => (object) [
+                    'type' => 'hasOne',
+                    'foreign' => 'user',
+                    'entity' => 'Lead',
+                    'isCustom' => true
                 ]
             ],
             'collection' => (object) [
@@ -14956,23 +14969,34 @@ return (object) [
                 ],
                 'title' => (object) [
                     'type' => 'varchar',
-                    'maxLength' => 100
+                    'maxLength' => 100,
+                    'required' => true,
+                    'options' => [
+                        
+                    ]
                 ],
                 'status' => (object) [
                     'type' => 'enum',
                     'options' => [
-                        0 => 'New',
-                        1 => 'Assigned',
-                        2 => 'In Process',
-                        3 => 'Converted',
-                        4 => 'Recycled',
-                        5 => 'Dead'
+                        0 => 'Select One Status',
+                        1 => 'New',
+                        2 => 'Prospect',
+                        3 => 'Qualifed',
+                        4 => 'Contracted',
+                        5 => 'Cancel',
+                        6 => 'Recycled'
                     ],
-                    'default' => 'New',
+                    'default' => 'Select One Status',
                     'style' => (object) [
                         'Converted' => 'success',
                         'Recycled' => 'danger',
-                        'Dead' => 'danger'
+                        'Dead' => 'danger',
+                        'Select One Status' => NULL,
+                        'New' => NULL,
+                        'Prospect' => NULL,
+                        'Qualifed' => NULL,
+                        'Contracted' => NULL,
+                        'Cancel' => NULL
                     ],
                     'audited' => true,
                     'fieldManagerAdditionalParamList' => [
@@ -14985,22 +15009,42 @@ return (object) [
                         0 => 'Converted',
                         1 => 'Recycled',
                         2 => 'Dead'
-                    ]
+                    ],
+                    'required' => true
                 ],
                 'source' => (object) [
                     'type' => 'enum',
                     'options' => [
                         0 => '',
-                        1 => 'Call',
-                        2 => 'Email',
-                        3 => 'Existing Customer',
-                        4 => 'Partner',
-                        5 => 'Public Relations',
-                        6 => 'Web Site',
-                        7 => 'Campaign',
-                        8 => 'Other'
+                        1 => 'Select One Source',
+                        2 => 'Advertisement',
+                        3 => 'Call',
+                        4 => 'Campaign',
+                        5 => 'Email',
+                        6 => 'Existing Customer',
+                        7 => 'Partner',
+                        8 => 'Public Relations',
+                        9 => 'Trade Show',
+                        10 => 'Social Media Marketing',
+                        11 => 'Web Site',
+                        12 => 'Other'
                     ],
-                    'default' => ''
+                    'default' => 'Select One Source',
+                    'style' => (object) [
+                        '' => NULL,
+                        'Select One Source' => NULL,
+                        'Advertisement' => NULL,
+                        'Call' => NULL,
+                        'Campaign' => NULL,
+                        'Email' => NULL,
+                        'Existing Customer' => NULL,
+                        'Partner' => NULL,
+                        'Public Relations' => NULL,
+                        'Trade Show' => NULL,
+                        'Social Media Marketing' => NULL,
+                        'Web Site' => NULL,
+                        'Other' => NULL
+                    ]
                 ],
                 'industry' => (object) [
                     'type' => 'enum',
@@ -15059,7 +15103,8 @@ return (object) [
                 ],
                 'emailAddress' => (object) [
                     'type' => 'email',
-                    'isPersonalData' => true
+                    'isPersonalData' => true,
+                    'required' => true
                 ],
                 'phoneNumber' => (object) [
                     'type' => 'phone',
@@ -15071,7 +15116,8 @@ return (object) [
                         4 => 'Other'
                     ],
                     'defaultType' => 'Mobile',
-                    'isPersonalData' => true
+                    'isPersonalData' => true,
+                    'required' => true
                 ],
                 'doNotCall' => (object) [
                     'type' => 'bool'
@@ -15188,6 +15234,142 @@ return (object) [
                     'readOnly' => true,
                     'disabled' => true
                 ],
+                'accountType' => (object) [
+                    'type' => 'enum',
+                    'required' => true,
+                    'options' => [
+                        0 => 'Select One Account Type',
+                        1 => 'Agent',
+                        2 => 'Biller',
+                        3 => 'Merchant',
+                        4 => 'SuperAgent'
+                    ],
+                    'style' => (object) [
+                        'Select One Account Type' => NULL,
+                        'Agent' => NULL,
+                        'Biller' => NULL,
+                        'Merchant' => NULL,
+                        'SuperAgent' => NULL
+                    ],
+                    'isSorted' => false,
+                    'default' => 'Select One Account Type',
+                    'isCustom' => true
+                ],
+                'companyName' => (object) [
+                    'type' => 'varchar',
+                    'required' => true,
+                    'trim' => true,
+                    'options' => [
+                        
+                    ],
+                    'isCustom' => true
+                ],
+                'annualRevenu' => (object) [
+                    'type' => 'currency',
+                    'required' => true,
+                    'isCustom' => true
+                ],
+                'noofEmp' => (object) [
+                    'type' => 'int',
+                    'required' => true,
+                    'isCustom' => true
+                ],
+                'billPaymentType' => (object) [
+                    'type' => 'enum',
+                    'options' => [
+                        0 => 'Online',
+                        1 => 'Offline'
+                    ],
+                    'style' => (object) [
+                        'Online' => NULL,
+                        'Offline' => NULL
+                    ],
+                    'default' => 'Online',
+                    'isCustom' => true
+                ],
+                'settlement' => (object) [
+                    'type' => 'enum',
+                    'options' => [
+                        0 => 'Daily',
+                        1 => 'Monthly',
+                        2 => 'Weekly'
+                    ],
+                    'style' => (object) [
+                        'Daily' => NULL,
+                        'Monthly' => NULL,
+                        'Weekly' => NULL
+                    ],
+                    'default' => 'Daily',
+                    'isCustom' => true
+                ],
+                'settlementMethod' => (object) [
+                    'type' => 'enum',
+                    'options' => [
+                        0 => 'Bank',
+                        1 => 'Mobile Money',
+                        2 => 'Cash',
+                        3 => 'Other'
+                    ],
+                    'style' => (object) [
+                        'Bank' => NULL,
+                        'Mobile Money' => NULL,
+                        'Cash' => NULL,
+                        'Other' => NULL
+                    ],
+                    'default' => 'Bank',
+                    'isCustom' => true
+                ],
+                'averageTicketSize' => (object) [
+                    'type' => 'varchar',
+                    'trim' => true,
+                    'options' => [
+                        
+                    ],
+                    'isCustom' => true
+                ],
+                'customerFees' => (object) [
+                    'type' => 'enum',
+                    'options' => [
+                        0 => 'Surcharge Flat',
+                        1 => 'Surcharge Percent',
+                        2 => 'Commission Flat',
+                        3 => 'Commission Percent'
+                    ],
+                    'style' => (object) [
+                        'Surcharge Flat' => NULL,
+                        'Surcharge Percent' => NULL,
+                        'Commission Flat' => NULL,
+                        'Commission Percent' => NULL
+                    ],
+                    'default' => 'Surcharge Flat',
+                    'isCustom' => true
+                ],
+                'processingFees' => (object) [
+                    'type' => 'enum',
+                    'options' => [
+                        0 => 'Surcharge Flat',
+                        1 => 'Surcharge Percent',
+                        2 => 'Commission Flat',
+                        3 => 'Commission Percent'
+                    ],
+                    'style' => (object) [
+                        'Surcharge Flat' => NULL,
+                        'Surcharge Percent' => NULL,
+                        'Commission Flat' => NULL,
+                        'Commission Percent' => NULL
+                    ],
+                    'default' => 'Surcharge Flat',
+                    'isCustom' => true
+                ],
+                'annualTransactionCount' => (object) [
+                    'type' => 'int',
+                    'isCustom' => true
+                ],
+                'user' => (object) [
+                    'type' => 'link',
+                    'isCustom' => true,
+                    'required' => true
+                ],
                 'middleName' => (object) [
                     'type' => 'varchar',
                     'trim' => true,
@@ -15238,6 +15420,27 @@ return (object) [
                     'mergeDisabled' => true,
                     'customizationDefaultDisabled' => true,
                     'customizationReadOnlyDisabled' => true
+                ],
+                'annualRevenuCurrency' => (object) [
+                    'type' => 'enum',
+                    'view' => 'views/fields/currency-list',
+                    'layoutDetailDisabled' => true,
+                    'layoutListDisabled' => true,
+                    'layoutMassUpdateDisabled' => true,
+                    'layoutDefaultSidePanelDisabled' => true,
+                    'customizationRequiredDisabled' => true,
+                    'customizationOptionsDisabled' => true,
+                    'customizationIsSortedDisabled' => true,
+                    'customizationDisplayAsLabelDisabled' => true,
+                    'customizationAuditedDisabled' => true,
+                    'customizationReadOnlyDisabled' => true,
+                    'customizationDefaultView' => 'views/admin/field-manager/fields/currency-default',
+                    'maxLength' => 6
+                ],
+                'annualRevenuConverted' => (object) [
+                    'type' => 'currencyConverted',
+                    'readOnly' => true,
+                    'importDisabled' => true
                 ]
             ],
             'links' => (object) [
@@ -15327,6 +15530,12 @@ return (object) [
                     'entity' => 'Document',
                     'foreign' => 'leads',
                     'audited' => true
+                ],
+                'user' => (object) [
+                    'type' => 'belongsTo',
+                    'foreign' => 'lead',
+                    'entity' => 'User',
+                    'isCustom' => true
                 ]
             ],
             'convertEntityList' => [

@@ -1,0 +1,9 @@
+{
+    "dynamicLogic": {
+        "fields": {
+            "source": {
+                "required": null
+            }
+        }
+    }
+}

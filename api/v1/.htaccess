@@ -5,6 +5,7 @@ RewriteEngine On
 # absolute physical path to the directory that contains this htaccess file.
 #
 # RewriteBase /
+#RewriteBase /REQUEST_URI/api/v1/
 
 RewriteRule .* - [E=HTTP_ESPO_CGI_AUTH:%{HTTP:Authorization}]
 

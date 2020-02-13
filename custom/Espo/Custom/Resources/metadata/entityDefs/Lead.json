@@ -1,0 +1,209 @@
+{
+    "fields": {
+        "accountType": {
+            "type": "enum",
+            "required": true,
+            "options": [
+                "Select One Account Type",
+                "Agent",
+                "Biller",
+                "Merchant",
+                "SuperAgent"
+            ],
+            "style": {
+                "Select One Account Type": null,
+                "Agent": null,
+                "Biller": null,
+                "Merchant": null,
+                "SuperAgent": null
+            },
+            "isSorted": false,
+            "default": "Select One Account Type",
+            "isCustom": true
+        },
+        "emailAddress": {
+            "required": true
+        },
+        "phoneNumber": {
+            "required": true
+        },
+        "title": {
+            "required": true,
+            "options": []
+        },
+        "companyName": {
+            "type": "varchar",
+            "required": true,
+            "trim": true,
+            "options": [],
+            "isCustom": true
+        },
+        "source": {
+            "options": [
+                "",
+                "Select One Source",
+                "Advertisement",
+                "Call",
+                "Campaign",
+                "Email",
+                "Existing Customer",
+                "Partner",
+                "Public Relations",
+                "Trade Show",
+                "Social Media Marketing",
+                "Web Site",
+                "Other"
+            ],
+            "default": "Select One Source",
+            "style": {
+                "": null,
+                "Select One Source": null,
+                "Advertisement": null,
+                "Call": null,
+                "Campaign": null,
+                "Email": null,
+                "Existing Customer": null,
+                "Partner": null,
+                "Public Relations": null,
+                "Trade Show": null,
+                "Social Media Marketing": null,
+                "Web Site": null,
+                "Other": null
+            }
+        },
+        "status": {
+            "options": [
+                "Select One Status",
+                "New",
+                "Prospect",
+                "Qualifed",
+                "Contracted",
+                "Cancel",
+                "Recycled"
+            ],
+            "default": "Select One Status",
+            "style": {
+                "Select One Status": null,
+                "New": null,
+                "Prospect": null,
+                "Qualifed": null,
+                "Contracted": null,
+                "Cancel": null,
+                "Recycled": "danger"
+            },
+            "required": true
+        },
+        "annualRevenu": {
+            "type": "currency",
+            "required": true,
+            "isCustom": true
+        },
+        "noofEmp": {
+            "type": "int",
+            "required": true,
+            "isCustom": true
+        },
+        "billPaymentType": {
+            "type": "enum",
+            "options": [
+                "Online",
+                "Offline"
+            ],
+            "style": {
+                "Online": null,
+                "Offline": null
+            },
+            "default": "Online",
+            "isCustom": true
+        },
+        "settlement": {
+            "type": "enum",
+            "options": [
+                "Daily",
+                "Monthly",
+                "Weekly"
+            ],
+            "style": {
+                "Daily": null,
+                "Monthly": null,
+                "Weekly": null
+            },
+            "default": "Daily",
+            "isCustom": true
+        },
+        "settlementMethod": {
+            "type": "enum",
+            "options": [
+                "Bank",
+                "Mobile Money",
+                "Cash",
+                "Other"
+            ],
+            "style": {
+                "Bank": null,
+                "Mobile Money": null,
+                "Cash": null,
+                "Other": null
+            },
+            "default": "Bank",
+            "isCustom": true
+        },
+        "averageTicketSize": {
+            "type": "varchar",
+            "trim": true,
+            "options": [],
+            "isCustom": true
+        },
+        "customerFees": {
+            "type": "enum",
+            "options": [
+                "Surcharge Flat",
+                "Surcharge Percent",
+                "Commission Flat",
+                "Commission Percent"
+            ],
+            "style": {
+                "Surcharge Flat": null,
+                "Surcharge Percent": null,
+                "Commission Flat": null,
+                "Commission Percent": null
+            },
+            "default": "Surcharge Flat",
+            "isCustom": true
+        },
+        "processingFees": {
+            "type": "enum",
+            "options": [
+                "Surcharge Flat",
+                "Surcharge Percent",
+                "Commission Flat",
+                "Commission Percent"
+            ],
+            "style": {
+                "Surcharge Flat": null,
+                "Surcharge Percent": null,
+                "Commission Flat": null,
+                "Commission Percent": null
+            },
+            "default": "Surcharge Flat",
+            "isCustom": true
+        },
+        "annualTransactionCount": {
+            "type": "int",
+            "isCustom": true
+        },
+        "user": {
+            "type": "link",
+            "isCustom": true,
+            "required": true
+        }
+    },
+    "links": {
+        "user": {
+            "type": "belongsTo",
+            "foreign": "lead",
+            "entity": "User",
+            "isCustom": true
+        }
+    }
+}

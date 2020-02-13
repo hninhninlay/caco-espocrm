@@ -3464,6 +3464,7 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
       'acceptanceStatus' => 'Acceptance Status',
       'acceptanceStatusMeetings' => 'Acceptance Status (Meetings)',
       'acceptanceStatusCalls' => 'Acceptance Status (Calls)',
+      'lead' => 'Lead',
     ),
     'links' => 
     array (
@@ -3479,6 +3480,7 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
       'tasks' => 'Tasks',
       'dashboardTemplate' => 'Dashboard Template',
       'targetLists' => 'Target Lists',
+      'lead' => 'Lead',
     ),
     'labels' => 
     array (
@@ -4301,9 +4303,9 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
     array (
       'name' => 'Name',
       'emailAddress' => 'Email',
-      'title' => 'Title',
+      'title' => 'Position',
       'website' => 'Website',
-      'phoneNumber' => 'Phone',
+      'phoneNumber' => 'Contact Phone No.',
       'accountName' => 'Account Name',
       'doNotCall' => 'Do Not Call',
       'address' => 'Address',
@@ -4324,6 +4326,20 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
       'opportunityAmountCurrency' => 'Opportunity Amount Currency',
       'acceptanceStatusMeetings' => 'Acceptance Status (Meetings)',
       'acceptanceStatusCalls' => 'Acceptance Status (Calls)',
+      'accountType' => 'Account Type',
+      'companyName' => 'Company Name',
+      'annualRevenu' => 'Annual Revenu',
+      'annualRevenuCurrency' => 'Annual Revenu (Currency)',
+      'annualRevenuConverted' => 'Annual Revenu (Converted)',
+      'noofEmp' => 'No of Employee',
+      'billPaymentType' => 'Bill Payment Type',
+      'settlement' => 'Settlement',
+      'settlementMethod' => 'Settlement Method',
+      'averageTicketSize' => 'Average Ticket Size',
+      'customerFees' => 'Customer Fees',
+      'processingFees' => 'Processing Fees',
+      'annualTransactionCount' => 'Annual Transaction Count',
+      'user' => 'Sale Representative',
     ),
     'links' => 
     array (
@@ -4335,6 +4351,7 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
       'createdOpportunity' => 'Opportunity',
       'cases' => 'Cases',
       'documents' => 'Documents',
+      'user' => 'User',
     ),
     'options' => 
     array (
@@ -4346,6 +4363,11 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
         'Converted' => 'Converted',
         'Recycled' => 'Recycled',
         'Dead' => 'Dead',
+        'Select One Status' => 'Select One Status',
+        'Prospect' => 'Prospect',
+        'Qualifed' => 'Qualifed',
+        'Contracted' => 'Contracted',
+        'Cancel' => 'Cancel',
       ),
       'source' => 
       array (
@@ -4358,6 +4380,50 @@ Disabled: Access to scopes will be allowed if it\'s not specified in roles.',
         'Web Site' => 'Web Site',
         'Campaign' => 'Campaign',
         'Other' => 'Other',
+        'Select One Source' => 'Select One Source',
+        'Advertisement' => 'Advertisement',
+        'Trade Show' => 'Trade Show',
+        'Social Media Marketing' => 'Social Media Marketing',
+      ),
+      'accountType' => 
+      array (
+        'Select One Account Type' => 'Select One Account Type',
+        'Agent' => 'Agent',
+        'Biller' => 'Biller',
+        'Merchant' => 'Merchant',
+        'SuperAgent' => 'SuperAgent',
+      ),
+      'billPaymentType' => 
+      array (
+        'Online' => 'Online',
+        'Offline' => 'Offline',
+      ),
+      'settlement' => 
+      array (
+        'Daily' => 'Daily',
+        'Monthly' => 'Monthly',
+        'Weekly' => 'Weekly',
+      ),
+      'settlementMethod' => 
+      array (
+        'Bank' => 'Bank',
+        'Mobile Money' => 'Mobile Money',
+        'Cash' => 'Cash',
+        'Other' => 'Other',
+      ),
+      'customerFees' => 
+      array (
+        'Surcharge Flat' => 'Surcharge Flat',
+        'Surcharge Percent' => 'Surcharge Percent',
+        'Commission Flat' => 'Commission Flat',
+        'Commission Percent' => 'Commission Percent',
+      ),
+      'processingFees' => 
+      array (
+        'Surcharge Flat' => 'Surcharge Flat',
+        'Surcharge Percent' => 'Surcharge Percent',
+        'Commission Flat' => 'Commission Flat',
+        'Commission Percent' => 'Commission Percent',
       ),
     ),
     'presetFilters' => 

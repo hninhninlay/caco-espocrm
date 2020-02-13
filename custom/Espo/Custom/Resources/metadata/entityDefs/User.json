@@ -1,0 +1,16 @@
+{
+    "fields": {
+        "lead": {
+            "type": "linkOne",
+            "isCustom": true
+        }
+    },
+    "links": {
+        "lead": {
+            "type": "hasOne",
+            "foreign": "user",
+            "entity": "Lead",
+            "isCustom": true
+        }
+    }
+}

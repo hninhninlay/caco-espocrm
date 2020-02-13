@@ -10456,6 +10456,29 @@ return array (
         'relation' => 'dashboardTemplate',
         'foreign' => 'name',
       ),
+      'leadId' => 
+      array (
+        'type' => 'foreign',
+        'notStorable' => true,
+        'attributeRole' => 'id',
+        'fieldType' => 'linkOne',
+        'relation' => 'lead',
+        'foreign' => 'id',
+      ),
+      'leadName' => 
+      array (
+        'type' => 'foreign',
+        'notStorable' => true,
+        'attributeRole' => 'name',
+        'fieldType' => 'linkOne',
+        'relation' => 'lead',
+        'foreign' => 
+        array (
+          0 => 'firstName',
+          1 => ' ',
+          2 => 'lastName',
+        ),
+      ),
       'targetListsIds' => 
       array (
         'type' => 'jsonArray',
@@ -10608,6 +10631,13 @@ return array (
         'key' => 'avatarId',
         'foreignKey' => 'id',
         'foreign' => NULL,
+      ),
+      'lead' => 
+      array (
+        'type' => 'hasOne',
+        'entity' => 'Lead',
+        'foreignKey' => 'userId',
+        'foreign' => 'user',
       ),
       'targetLists' => 
       array (
@@ -18882,14 +18912,14 @@ return array (
       'status' => 
       array (
         'type' => 'varchar',
-        'default' => 'New',
+        'default' => 'Select One Status',
         'fieldType' => 'varchar',
         'len' => 255,
       ),
       'source' => 
       array (
         'type' => 'varchar',
-        'default' => '',
+        'default' => 'Select One Source',
         'fieldType' => 'varchar',
         'len' => 255,
       ),
@@ -19335,6 +19365,94 @@ return array (
         'fieldType' => 'bool',
         'default' => false,
       ),
+      'accountType' => 
+      array (
+        'type' => 'varchar',
+        'default' => 'Select One Account Type',
+        'fieldType' => 'varchar',
+        'len' => 255,
+      ),
+      'companyName' => 
+      array (
+        'type' => 'varchar',
+        'fieldType' => 'varchar',
+        'len' => 255,
+      ),
+      'annualRevenu' => 
+      array (
+        'type' => 'float',
+        'fieldType' => 'currency',
+        'orderBy' => 
+        array (
+          'sql' => 'lead.annual_revenu * annualRevenuCurrencyRate.rate {direction}',
+          'leftJoins' => 
+          array (
+            0 => 
+            array (
+              0 => 'Currency',
+              1 => 'annualRevenuCurrencyRate',
+              2 => 
+              array (
+                'annualRevenuCurrencyRate.id:' => 'annualRevenuCurrency',
+              ),
+            ),
+          ),
+        ),
+        'attributeRole' => 'value',
+      ),
+      'noofEmp' => 
+      array (
+        'type' => 'int',
+        'fieldType' => 'int',
+        'len' => 11,
+      ),
+      'billPaymentType' => 
+      array (
+        'type' => 'varchar',
+        'default' => 'Online',
+        'fieldType' => 'varchar',
+        'len' => 255,
+      ),
+      'settlement' => 
+      array (
+        'type' => 'varchar',
+        'default' => 'Daily',
+        'fieldType' => 'varchar',
+        'len' => 255,
+      ),
+      'settlementMethod' => 
+      array (
+        'type' => 'varchar',
+        'default' => 'Bank',
+        'fieldType' => 'varchar',
+        'len' => 255,
+      ),
+      'averageTicketSize' => 
+      array (
+        'type' => 'varchar',
+        'fieldType' => 'varchar',
+        'len' => 255,
+      ),
+      'customerFees' => 
+      array (
+        'type' => 'varchar',
+        'default' => 'Surcharge Flat',
+        'fieldType' => 'varchar',
+        'len' => 255,
+      ),
+      'processingFees' => 
+      array (
+        'type' => 'varchar',
+        'default' => 'Surcharge Flat',
+        'fieldType' => 'varchar',
+        'len' => 255,
+      ),
+      'annualTransactionCount' => 
+      array (
+        'type' => 'int',
+        'fieldType' => 'int',
+        'len' => 11,
+      ),
       'middleName' => 
       array (
         'type' => 'varchar',
@@ -19444,6 +19562,13 @@ return array (
         ),
         'orderBy' => 'phoneNumbers.opt_out {direction}',
         'default' => false,
+      ),
+      'annualRevenuCurrency' => 
+      array (
+        'type' => 'varchar',
+        'len' => 6,
+        'fieldType' => 'currency',
+        'attributeRole' => 'currency',
       ),
       'opportunityAmountConverted' => 
       array (
@@ -19923,6 +20048,192 @@ return array (
         'attributeRole' => 'name',
         'fieldType' => 'link',
       ),
+      'annualRevenuConverted' => 
+      array (
+        'type' => 'float',
+        'select' => 
+        array (
+          'sql' => 'lead.annual_revenu * annualRevenuCurrencyRate.rate',
+          'leftJoins' => 
+          array (
+            0 => 
+            array (
+              0 => 'Currency',
+              1 => 'annualRevenuCurrencyRate',
+              2 => 
+              array (
+                'annualRevenuCurrencyRate.id:' => 'annualRevenuCurrency',
+              ),
+            ),
+          ),
+        ),
+        'selectForeign' => 
+        array (
+          'sql' => '{alias}.annual_revenu * annualRevenuCurrencyRateLeadForeign.rate',
+          'leftJoins' => 
+          array (
+            0 => 
+            array (
+              0 => 'Currency',
+              1 => 'annualRevenuCurrencyRateLeadForeign',
+              2 => 
+              array (
+                'annualRevenuCurrencyRateLeadForeign.id:' => '{alias}.annualRevenuCurrency',
+              ),
+            ),
+          ),
+        ),
+        'where' => 
+        array (
+          '=' => 
+          array (
+            'sql' => 'lead.annual_revenu * annualRevenuCurrencyRate.rate = {value}',
+            'leftJoins' => 
+            array (
+              0 => 
+              array (
+                0 => 'Currency',
+                1 => 'annualRevenuCurrencyRate',
+                2 => 
+                array (
+                  'annualRevenuCurrencyRate.id:' => 'annualRevenuCurrency',
+                ),
+              ),
+            ),
+          ),
+          '>' => 
+          array (
+            'sql' => 'lead.annual_revenu * annualRevenuCurrencyRate.rate > {value}',
+            'leftJoins' => 
+            array (
+              0 => 
+              array (
+                0 => 'Currency',
+                1 => 'annualRevenuCurrencyRate',
+                2 => 
+                array (
+                  'annualRevenuCurrencyRate.id:' => 'annualRevenuCurrency',
+                ),
+              ),
+            ),
+          ),
+          '<' => 
+          array (
+            'sql' => 'lead.annual_revenu * annualRevenuCurrencyRate.rate < {value}',
+            'leftJoins' => 
+            array (
+              0 => 
+              array (
+                0 => 'Currency',
+                1 => 'annualRevenuCurrencyRate',
+                2 => 
+                array (
+                  'annualRevenuCurrencyRate.id:' => 'annualRevenuCurrency',
+                ),
+              ),
+            ),
+          ),
+          '>=' => 
+          array (
+            'sql' => 'lead.annual_revenu * annualRevenuCurrencyRate.rate >= {value}',
+            'leftJoins' => 
+            array (
+              0 => 
+              array (
+                0 => 'Currency',
+                1 => 'annualRevenuCurrencyRate',
+                2 => 
+                array (
+                  'annualRevenuCurrencyRate.id:' => 'annualRevenuCurrency',
+                ),
+              ),
+            ),
+          ),
+          '<=' => 
+          array (
+            'sql' => 'lead.annual_revenu * annualRevenuCurrencyRate.rate <= {value}',
+            'leftJoins' => 
+            array (
+              0 => 
+              array (
+                0 => 'Currency',
+                1 => 'annualRevenuCurrencyRate',
+                2 => 
+                array (
+                  'annualRevenuCurrencyRate.id:' => 'annualRevenuCurrency',
+                ),
+              ),
+            ),
+          ),
+          '<>' => 
+          array (
+            'sql' => 'lead.annual_revenu * annualRevenuCurrencyRate.rate <> {value}',
+            'leftJoins' => 
+            array (
+              0 => 
+              array (
+                0 => 'Currency',
+                1 => 'annualRevenuCurrencyRate',
+                2 => 
+                array (
+                  'annualRevenuCurrencyRate.id:' => 'annualRevenuCurrency',
+                ),
+              ),
+            ),
+          ),
+          'IS NULL' => 
+          array (
+            'sql' => 'lead.annual_revenu IS NULL',
+          ),
+          'IS NOT NULL' => 
+          array (
+            'sql' => 'lead.annual_revenu IS NOT NULL',
+          ),
+        ),
+        'notStorable' => true,
+        'orderBy' => 
+        array (
+          'sql' => 'annualRevenuConverted {direction}',
+          'leftJoins' => 
+          array (
+            0 => 
+            array (
+              0 => 'Currency',
+              1 => 'annualRevenuCurrencyRate',
+              2 => 
+              array (
+                'annualRevenuCurrencyRate.id:' => 'annualRevenuCurrency',
+              ),
+            ),
+          ),
+        ),
+        'attributeRole' => 'valueConverted',
+        'fieldType' => 'currency',
+      ),
+      'userId' => 
+      array (
+        'dbType' => 'varchar',
+        'len' => 24,
+        'type' => 'foreignId',
+        'index' => true,
+        'attributeRole' => 'id',
+        'fieldType' => 'link',
+        'notNull' => false,
+      ),
+      'userName' => 
+      array (
+        'type' => 'foreign',
+        'notStorable' => false,
+        'attributeRole' => 'name',
+        'fieldType' => 'link',
+        'relation' => 'user',
+        'foreign' => 
+        array (
+          0 => 'firstName',
+          1 => ' ',
+          2 => 'lastName',
+        ),
+      ),
       'isFollowed' => 
       array (
         'type' => 'varchar',
@@ -20083,6 +20394,14 @@ return array (
             'default' => false,
           ),
         ),
+      ),
+      'user' => 
+      array (
+        'type' => 'belongsTo',
+        'entity' => 'User',
+        'key' => 'userId',
+        'foreignKey' => 'id',
+        'foreign' => 'lead',
       ),
       'documents' => 
       array (
@@ -20403,6 +20722,15 @@ return array (
           0 => 'createdOpportunityId',
         ),
         'key' => 'IDX_CREATED_OPPORTUNITY_ID',
+      ),
+      'userId' => 
+      array (
+        'type' => 'index',
+        'columns' => 
+        array (
+          0 => 'userId',
+        ),
+        'key' => 'IDX_USER_ID',
       ),
     ),
     'collection' => 

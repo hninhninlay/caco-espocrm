@@ -1,0 +1,126 @@
+[
+    {
+        "rows": [
+            [
+                {
+                    "name": "name"
+                },
+                false
+            ],
+            [
+                {
+                    "name": "accountType"
+                },
+                {
+                    "name": "accountName"
+                }
+            ],
+            [
+                {
+                    "name": "emailAddress"
+                },
+                {
+                    "name": "phoneNumber"
+                }
+            ],
+            [
+                {
+                    "name": "title"
+                },
+                {
+                    "name": "website"
+                }
+            ],
+            [
+                {
+                    "name": "companyName"
+                },
+                {
+                    "name": "address"
+                }
+            ]
+        ],
+        "style": "default",
+        "label": "Overview"
+    },
+    {
+        "rows": [
+            [
+                {
+                    "name": "status"
+                },
+                {
+                    "name": "source"
+                }
+            ],
+            [
+                {
+                    "name": "annualRevenu"
+                },
+                {
+                    "name": "noofEmp"
+                }
+            ],
+            [
+                {
+                    "name": "industry"
+                },
+                {
+                    "name": "user"
+                }
+            ],
+            [
+                {
+                    "name": "description"
+                }
+            ]
+        ],
+        "style": "default",
+        "label": "Details"
+    },
+    {
+        "rows": [
+            [
+                {
+                    "name": "billPaymentType"
+                },
+                {
+                    "name": "settlement"
+                }
+            ],
+            [
+                {
+                    "name": "settlementMethod"
+                },
+                {
+                    "name": "averageTicketSize"
+                }
+            ],
+            [
+                {
+                    "name": "customerFees"
+                },
+                {
+                    "name": "processingFees"
+                }
+            ],
+            [
+                {
+                    "name": "annualTransactionCount"
+                },
+                false
+            ]
+        ],
+        "style": "default",
+        "dynamicLogicVisible": {
+            "conditionGroup": [
+                {
+                    "type": "equals",
+                    "attribute": "accountType",
+                    "value": "Biller"
+                }
+            ]
+        },
+        "customLabel": "For Biller Account Type"
+    }
+]

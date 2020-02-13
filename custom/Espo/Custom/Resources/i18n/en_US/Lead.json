@@ -1,0 +1,83 @@
+{
+    "fields": {
+        "accountType": "Account Type",
+        "phoneNumber": "Contact Phone No.",
+        "title": "Position",
+        "companyName": "Company Name",
+        "annualRevenu": "Annual Revenu",
+        "annualRevenuCurrency": "Annual Revenu (Currency)",
+        "annualRevenuConverted": "Annual Revenu (Converted)",
+        "noofEmp": "No of Employee",
+        "billPaymentType": "Bill Payment Type",
+        "settlement": "Settlement",
+        "settlementMethod": "Settlement Method",
+        "averageTicketSize": "Average Ticket Size",
+        "customerFees": "Customer Fees",
+        "processingFees": "Processing Fees",
+        "annualTransactionCount": "Annual Transaction Count",
+        "user": "Sale Representative"
+    },
+    "options": {
+        "accountType": {
+            "Select One Account Type": "Select One Account Type",
+            "Agent": "Agent",
+            "Biller": "Biller",
+            "Merchant": "Merchant",
+            "SuperAgent": "SuperAgent"
+        },
+        "source": {
+            "": "None",
+            "Select One Source": "Select One Source",
+            "Advertisement": "Advertisement",
+            "Call": "Call",
+            "Campaign": "Campaign",
+            "Email": "Email",
+            "Existing Customer": "Existing Customer",
+            "Partner": "Partner",
+            "Public Relations": "Public Relations",
+            "Trade Show": "Trade Show",
+            "Social Media Marketing": "Social Media Marketing",
+            "Web Site": "Web Site",
+            "Other": "Other"
+        },
+        "status": {
+            "Select One Status": "Select One Status",
+            "New": "New",
+            "Prospect": "Prospect",
+            "Qualifed": "Qualifed",
+            "Contracted": "Contracted",
+            "Cancel": "Cancel",
+            "Recycled": "Recycled"
+        },
+        "billPaymentType": {
+            "Online": "Online",
+            "Offline": "Offline"
+        },
+        "settlement": {
+            "Daily": "Daily",
+            "Monthly": "Monthly",
+            "Weekly": "Weekly"
+        },
+        "settlementMethod": {
+            "Bank": "Bank",
+            "Mobile Money": "Mobile Money",
+            "Cash": "Cash",
+            "Other": "Other"
+        },
+        "customerFees": {
+            "Surcharge Flat": "Surcharge Flat",
+            "Surcharge Percent": "Surcharge Percent",
+            "Commission Flat": "Commission Flat",
+            "Commission Percent": "Commission Percent"
+        },
+        "processingFees": {
+            "Surcharge Flat": "Surcharge Flat",
+            "Surcharge Percent": "Surcharge Percent",
+            "Commission Flat": "Commission Flat",
+            "Commission Percent": "Commission Percent"
+        }
+    },
+    "links": {
+        "user": "User"
+    }
+}
